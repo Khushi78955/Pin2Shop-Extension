@@ -1,0 +1,37 @@
+{
+    "manifest_version": 3,
+    "name": "Pin2Shop",
+    "version": "1.0.0",
+    "description": "Find similar products from popular shopping websites while browsing Pinterest.",
+
+    "background": {
+        "service_worker": "background/background.js",
+        "type": "module"
+    },
+
+    "content_scripts": [
+        {
+            "matches": [
+                "https://*.pinterest.com/*"
+            ],
+            "js": [
+                "content/content.js"
+            ],
+            "run_at": "document_idle"
+        }
+    ],
+
+    "permissions": [
+        "activeTab"
+    ],
+
+    "host_permissions": [
+        "https://*.pinterest.com/*"
+    ],
+
+    "browser_specific_settings": {
+        "gecko": {
+            "id": "pin2shop@khushi.dev"
+        }
+    }
+}
